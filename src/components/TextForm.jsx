@@ -28,7 +28,7 @@ export default function TextForm(props) {
     const handleClearClick = () => {
         let newText = '';
         setText(newText);
-        props.showAlert("Text Filed Empty", "success")
+        props.showAlert("Text Field Empty", "success")
 
     }
 
@@ -44,10 +44,7 @@ export default function TextForm(props) {
     }
 
     const handleCopy = () => {
-        // var text = document.getElementById('myBox');
-        // text.select();
         navigator.clipboard.writeText(text);
-        // document.getSelection().removeAllRanges();
         props.showAlert("Copy on Clipborad", "success")
 
     }
@@ -76,6 +73,7 @@ export default function TextForm(props) {
         <div className="container my-3" style={{color:props.mode === 'dark' ? 'white' : 'black'}}>
             <h1>Your Text Summary</h1>
             <p>{text.split(/\s+/).filter((element)=>{return element.length !== 0}).length} Words </p>
+            <p>{text.length} Characters </p>
             <p>{0.008 * text.split(" ").filter((element)=>{return element.length !== 0}).length} Minutes Read</p>
             <h2>Preview</h2>
             <p>{text.length>0 ? text : "Nothnig to Preview !"}</p>
